@@ -2,7 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:news/core/models/article_response/article.dart';
 import 'package:news/main.dart';
 import 'package:news/home/presentation/manager/home_provider.dart';
@@ -62,25 +61,25 @@ class NewsCard extends StatelessWidget {
                       maxLines: 4,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    Spacer(),
+                    const Spacer(),
                     CupertinoButton(
                       padding: REdgeInsets.all(8),
+                      onPressed: () async {
+                        await _launchUrl(Uri.parse(article.url ?? ""));
+                      },
+                      borderRadius: BorderRadius.circular(8.r),
+                      color: AppColors.black,
                       child: SizedBox(
                         width: double.infinity,
                         child: Center(
                           child: Text(
-                            "View Full Articel",
+                            "View Full Article",
                             style: context.textTheme.bodyMedium?.copyWith(
                               color: AppColors.white,
                             ),
                           ),
                         ),
                       ),
-                      onPressed: () async {
-                        await _launchUrl(Uri.parse(article.url ?? ""));
-                      },
-                      borderRadius: BorderRadius.circular(8.r),
-                      color: AppColors.black,
                     ),
                   ],
                 ),
